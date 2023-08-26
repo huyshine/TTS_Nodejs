@@ -110,7 +110,9 @@ const Add = () => {
           name="content"
           rules={[{ required: true, message: "Please input your content!" }]}
         >
-          <TextArea  />
+          <TextArea  
+          placeholder="Please input your content!"
+        autoSize={{ minRows: 10, maxRows: 15 }} />
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
