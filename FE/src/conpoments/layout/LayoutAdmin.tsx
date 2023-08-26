@@ -4,7 +4,8 @@ import {
     AiOutlineMenuFold,
     AiOutlineMenuUnfold,
     AiOutlineUser,
-    AiOutlineComment
+    AiOutlineComment,
+    AiFillHome
 } from "react-icons/ai";
 import { ImBlog } from "react-icons/im";
 import { BsFillPeopleFill, BsFillTrashFill } from "react-icons/bs";
@@ -51,6 +52,11 @@ const LayoutAdmin = () => {
                             key: "5",
                             icon: <BsFillTrashFill />,
                             label: <Link to="/admin/comment/trash">Trash</Link>,
+                        },
+                        {
+                            key: "6",
+                            icon: <AiFillHome />,
+                            label: <Link to="/blog/">Home</Link>,
                         },
                     ]}
                 />

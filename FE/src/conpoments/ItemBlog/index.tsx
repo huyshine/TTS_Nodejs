@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Typography } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import {
   useAddCommentMutation,
@@ -7,10 +7,11 @@ import {
 } from "../../api/comments";
 import { Link, useParams } from "react-router-dom";
 import { useGetBlogDetailQuery } from "../../api/blog";
-
 import type Icon from "@ant-design/icons";
 import { LikeOutlined, MessageOutlined, StarOutlined } from "@ant-design/icons";
 import { Avatar, List, Skeleton, Switch } from "antd";
+const { Title } = Typography;
+
 import io from "socket.io-client";
 
 const socket = io("http://localhost:8080");
@@ -47,7 +48,7 @@ const ItemBlog = () => {
   const { data: Alldata, isLoading , refetch } = useGetCmtByPostQuery(
     blog?.data?._id || ""
   );
-    console.log(Alldata);
+    // console.log(Alldata);
     
   const [loading, setLoading] = useState(true);
 
@@ -85,7 +86,8 @@ const ItemBlog = () => {
     <div className="col-md-8">
       <div className="main-content themeix-blog-post">
         <div className="blog-post-img">
-          <img src="./public/images/blog-post-img.jpg" alt="blog post img" />
+          {/* <img src="./public/images/blog-post-img.jpg" alt="blog post img" /> */}
+          <img src={blog?.data?.image} alt="" />
         </div>
         <ul className="blog-post-meta list-inline">
           <li className="list-inline-item">
@@ -99,7 +101,9 @@ const ItemBlog = () => {
         </ul>
         <br />
         <h2>
-          <Link to={`/blog/${blog?.data?.slug}`}>{blog?.data?.title}</Link>
+          {/* <Link to={`/blog/${blog?.data?.slug}`}>{blog?.data?.title}</Link> */}
+          <Title level={2}>{blog?.data?.title}</Title>
+
         </h2>
         <br />
         <p>{blog?.data?.content}</p>
@@ -148,6 +152,7 @@ const ItemBlog = () => {
             </div>
           </div>
         </div>
+        <br />
         <div className="blog-post-comment">
           <h3 className="blog-post-title">
             Số comment {Alldata?.data?.length}

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Button, Space, Table, Tag } from "antd";
+import { Button, Skeleton, Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import {
   useFeaturesCommentMutation,
@@ -7,6 +7,7 @@ import {
   useRestoreCommentMutation,
 } from "../../../api/comments";
 import swal from "sweetalert";
+import { checkAuth } from "../../../utitl/authenticate/checkAuth";
 
 const Comment = () => {
   const { data: allCmt, isLoading, refetch } = useGetAllTrashCmtQuery();
@@ -109,10 +110,14 @@ const Comment = () => {
       ...item,
     };
   });
+  checkAuth()
+
 
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      {/* <Table columns={columns} dataSource={data} /> */}
+      {!isLoading ?  <Table columns={columns} dataSource={data} /> : <Skeleton /> }
+
     </div>
   );
 };

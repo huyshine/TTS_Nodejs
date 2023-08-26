@@ -11,7 +11,7 @@ import ListAuth from "./pages/admin/auth/List";
 import LayoutClient from "./conpoments/layout/LayoutClient";
 import Blog from "./pages/client/blog/Blog";
 import BlogDetail from "./pages/client/blog/BlogDetail";
-import Comment from "./pages/admin/trash/comment";
+import Comment from "./pages/admin/trash/Comment";
 
 function App() {
   return (

@@ -70,6 +70,7 @@ export const signin = async (profile) => {
         user: {
           id: findEmail._id,
           email: findEmail.email,
+          role: findEmail.role,
         },
       };
 

@@ -5,6 +5,8 @@ import { useDeleteBlogMutation, useGetblogQuery } from "../../../api/blog";
 import { Link } from "react-router-dom";
 import { checkAuth } from "../../../utitl/authenticate/checkAuth";
 import swal from "sweetalert";
+import { Skeleton } from 'antd';
+
 
 
 const List = () => {
@@ -12,6 +14,8 @@ const List = () => {
   useEffect(()=>{
     refetch()
   },[blogs?.data?.comments])
+
+
 
   const [deleteBlog] = useDeleteBlogMutation();
   const handleDelete = (id: string) => {
@@ -47,6 +51,12 @@ const List = () => {
       dataIndex: "title",
       key: "title",
       render: (text: any) => <a>{text}</a>,
+    },
+    {
+      title: "image",
+      dataIndex: "image",
+      key: "image",
+      render: (text: any) => <img src={text} alt="" />,
     },
     {
       title: "content",
@@ -95,7 +105,8 @@ const List = () => {
       <Button>
         <Link to={`/admin/blog/add`}>Add Blogs</Link>
       </Button>
-      <Table columns={columns} dataSource={data} />
+      {!isLoading ?  <Table columns={columns} dataSource={data} /> : <Skeleton /> }
+      
     </div>
   );
 };

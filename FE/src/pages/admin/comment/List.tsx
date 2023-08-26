@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { Button, Space, Table, Tag } from "antd";
+import { Button, Skeleton, Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import {
   useGetAllCmtQuery,
   useRemoveCommentMutation,
 } from "../../../api/comments";
 import swal from "sweetalert";
+import { checkAuth } from "../../../utitl/authenticate/checkAuth";
 
 const ListCmt = () => {
 
@@ -92,10 +93,14 @@ const ListCmt = () => {
       ...item,
     };
   });
+  checkAuth()
+
 
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      {/* <Table columns={columns} dataSource={data} /> */}
+      {!isLoading ?  <Table columns={columns} dataSource={data} /> : <Skeleton /> }
+
     </div>
   );
 };

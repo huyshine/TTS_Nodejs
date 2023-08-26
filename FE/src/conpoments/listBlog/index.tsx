@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGetblogQuery } from "../../api/blog";
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 type Props = {};
 
 const ListBlog = (props: Props) => {
   const { data: blogs } = useGetblogQuery();
+
 
   return (
     <div className="col-md-8">
@@ -17,18 +21,21 @@ const ListBlog = (props: Props) => {
                 <div className="col-md-12 col-lg-6">
                   <div className="article-post">
                     <div className="article-post-thumbnail">
-                      <a href="single.html">
+                      <Link to={`/blog/${blog?.slug}`}>
                         <img
-                          src="./public/images/article-post.jpg"
-                          alt="article post image"
+                          src={blog?.image}
+                          alt="post-thumbnail"
                         />
-                      </a>
+                      </Link>
                     </div>
                     <div className="article-post-intro">
                       <h5>
-                        <Link to={`/blog/${blog?.slug}`}>
+                        {/* <Link to={`/blog/${blog?.slug}`}>
                           {blog?.title}
-                        </Link>
+                        </Link> */}
+                        <Title level={4}> <Link to={`/blog/${blog?.slug}`}>
+                          {blog?.title}
+                        </Link></Title>
                       </h5>
                       <p>
                         {blog?.content}

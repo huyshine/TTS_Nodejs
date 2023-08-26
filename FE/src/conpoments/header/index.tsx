@@ -1,4 +1,7 @@
 import React from "react";
+import { admin, logout } from "../../utitl/authenticate/Logout";
+import { Link } from "react-router-dom";
+import { Button, Image } from "antd";
 
 type Props = {};
 
@@ -55,9 +58,15 @@ const Header = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="themeix-brand float-left">
-                <a href="index.html">
-                  <img src="./public/images/navbar-brand.png" alt="brand logo" />
-                </a>
+                {/* <a href="index.html">
+                  <img
+                    src="./public/images/navbar-brand.png"
+                    alt="brand logo"
+                  />
+                </a> */}
+                <Link to={`/blog`}>
+                  <img width={100} src="https://gudlogo.com/wp-content/uploads/2019/04/logo-blog-13.png" alt="" />
+                </Link>
               </div>
               <div className="themeix-main-menu float-right">
                 <div className="button_container" id="toggle">
@@ -94,14 +103,19 @@ const Header = () => {
                         </a>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="guideline.html">
-                          style guide
-                        </a>
+                        <Link className="nav-link" to={`admin/dashboard`}>
+                          {admin()}
+                        </Link>
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="contact.html">
-                          Contact
-                        </a>
+                        {/* <Link className="nav-link" to={`/auth/signin`}>
+                          {localStorage.getItem("auth") ? "Logout" : "Login"}
+                        </Link> */}
+                        <button onClick={() => logout()}>
+                          <Link className="nav-link" to={`/auth/signin`}>
+                            {localStorage.getItem("auth") ? "Logout" : "Login"}
+                          </Link>
+                        </button>
                       </li>
                       <li className="nav-item">
                         <a
@@ -120,7 +134,7 @@ const Header = () => {
                 <div
                   className="modal fade themeix-modal"
                   id="mymodal"
-                //   tabIndex="-1"
+                  //   tabIndex="-1"
                 >
                   <div className="modal-dialog">
                     <div className="modal-content">

@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Checkbox, Form, Input, message } from 'antd';
 import { useLoginMutation } from "../../../api/user";
 import { Link, useNavigate } from "react-router-dom";
+import { checkAuth } from "../../../utitl/authenticate/checkAuth";
 
 
 const Signin = () => {
@@ -22,7 +23,8 @@ const Signin = () => {
       });
       localStorage.setItem("auth", JSON.stringify(res?.data));
       setTimeout(() => {
-        navigate("/admin/dashboard");
+        navigate("/blog");
+        // checkAuth();
       }, 1500);
     })
   };

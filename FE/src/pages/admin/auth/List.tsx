@@ -1,7 +1,8 @@
 import React from "react";
-import { Space, Table, Tag } from "antd";
+import { Skeleton, Space, Table, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { useGetAlluserQuery } from "../../../api/user";
+import { checkAuth } from "../../../utitl/authenticate/checkAuth";
 
 const ListAuth = () => {
   const { data:auth , isLoading } = useGetAlluserQuery();
@@ -49,9 +50,12 @@ const ListAuth = () => {
       ...item,
     };
   });
+  checkAuth()
+
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      {/* <Table columns={columns} dataSource={data} /> */}
+      {!isLoading ?  <Table columns={columns} dataSource={data} /> : <Skeleton /> }
     </div>
   );
 };
