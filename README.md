@@ -41,5 +41,5 @@ Install dependencies
 Run project
 
 ```javascript
-    npm run dev
+    pnpm run dev
 ```
