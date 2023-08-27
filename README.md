@@ -1,5 +1,45 @@
-# Chạy bên FE: pnpm dev
-# Chạy bên BE: pnpm dev
-# Account Admin :
-# Email :user1@gmail.com
-# Password: 123456
+
+## Run BE
+
+Go to client directory
+
+```javascript
+    cd ./BE
+```
+
+Install dependencies
+
+```javascript
+    pnpm i / pnpm install
+```
+
+Run project
+
+```javascript
+    pnpm run dev
+```
+
+ ** Admin account **
+ 
+ * email: admin1@gmail.com
+ * password: 123456. 
+
+## Run FE
+
+Go to server directory
+
+```javascript
+    cd ./FE
+```
+
+Install dependencies
+
+```javascript
+    pnpm i / pnpm install
+```
+
+Run project
+
+```javascript
+    npm run dev
+```
