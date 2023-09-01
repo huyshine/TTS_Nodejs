@@ -34,7 +34,7 @@ function App() {
           <Route path="blog">
             <Route path="" element={<List />} />
             <Route path="add" element={<Add />} />
-            <Route path="edit/:slug" element={<Edit />} />
+            <Route path="edit/:id" element={<Edit />} />
           </Route>
           {/* Router comment */}
           <Route path="comment">

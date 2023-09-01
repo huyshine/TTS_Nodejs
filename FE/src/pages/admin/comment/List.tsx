@@ -48,14 +48,14 @@ const ListCmt = () => {
   const columns = [
     {
       title: "ID Post",
-      dataIndex: "_id",
-      key: "_id",
+      dataIndex: "id",
+      key: "id",
     },
     {
       title: "Bài post",
-      dataIndex: "blogId",
-      key: "blogId",
-      render: (blog: any) => <a>{blog?.title}</a>,
+      dataIndex: "title",
+      key: "title",
+      render: (title: any) => <a>{title}</a>,
     },
     {
       title: "Nội dung bình luận",
@@ -65,9 +65,9 @@ const ListCmt = () => {
     },
     {
       title: "Người bình luận",
-      dataIndex: "userId",
-      key: "userId",
-      render: (user: any) => <a>{user?.name}</a>,
+      dataIndex: "name",
+      key: "name",
+      render: (name: any) => <a>{name}</a>,
     },
     {
       title: "Ngày bình luận",
@@ -79,7 +79,7 @@ const ListCmt = () => {
       key: "action",
       render: (_: any, record: any) => (
         <Space size="middle">
-          <Button danger onClick={() => deleteCmt(record?._id)}>
+          <Button danger onClick={() => deleteCmt(record?.id)}>
             Xóa
           </Button>
         </Space>

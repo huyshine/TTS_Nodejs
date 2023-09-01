@@ -21,7 +21,7 @@ const ListBlog = (props: Props) => {
                 <div className="col-md-12 col-lg-6">
                   <div className="article-post">
                     <div className="article-post-thumbnail">
-                      <Link to={`/blog/${blog?.slug}`}>
+                      <Link to={`/blog/${blog?.id}`}>
                         <img
                           src={blog?.image}
                           alt="post-thumbnail"
@@ -33,7 +33,7 @@ const ListBlog = (props: Props) => {
                         {/* <Link to={`/blog/${blog?.slug}`}>
                           {blog?.title}
                         </Link> */}
-                        <Title level={4}> <Link to={`/blog/${blog?.slug}`}>
+                        <Title level={4}> <Link to={`/blog/${blog?.id}`}>
                           {blog?.title}
                         </Link></Title>
                       </h5>
@@ -42,15 +42,15 @@ const ListBlog = (props: Props) => {
                       </p>
                       <ul className="article-post-meta list-inline">
                         <li className="list-inline-item">
-                          <a href="#">Tác giả : {blog?.userId?.name}</a>
+                          <a href="#">Tác giả : {blog?.name}</a>
                         </li>
                         <br />
                         <li className="list-inline-item">
-                          <a href="#">Ngày đăng : {blog?.createdAt}</a>
+                          <a href="#">Ngày đăng : {blog?.createAt}</a>
                         </li>
                         <br />
                         <li className="list-inline-item">
-                          <a href="#">{blog?.comments?.length} comment</a>
+                          {/* <a href="#">{blog?.comments?.length} comment</a> */}
                         </li>
                       </ul>
                     </div>

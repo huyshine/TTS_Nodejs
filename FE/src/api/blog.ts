@@ -3,11 +3,11 @@ import { pause } from "../utitl/pause/pause";
 
 export const blogApi = createApi({
   reducerPath: "blog",
-  tagTypes: ["Comment Blog"],
+  tagTypes: ["Blog"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/",
+    baseUrl: "http://localhost:3000/api/",
     prepareHeaders: (headers) => {
-      const token = JSON.parse(localStorage.getItem("auth")).accessToken;
+      const token = JSON.parse(localStorage.getItem("auth"))?.access_token      ;
       headers.set("authorization", `Bearer ${token}`);
       // modify header theo từng request
       return headers;
@@ -20,13 +20,13 @@ export const blogApi = createApi({
   endpoints: (builder) => ({
     getblog: builder.query<any, void>({
       query: () => `blog`,
-      providesTags: ["Comment Blog"],
+      providesTags: ["Blog"],
     }),
     getBlogDetail: builder.query<any, number | string>({
-      query: (slug: number | string) => ({
-        url: `blog/${slug}`,
+      query: (id: number | string) => ({
+        url: `blog/${id}`,
       }),
-      providesTags: ["Comment Blog"],
+      providesTags: ["Blog"],
     }),
     addBlog: builder.mutation<any, any>({
       query: (data: any) => ({
@@ -34,22 +34,22 @@ export const blogApi = createApi({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Comment Blog"],
+      invalidatesTags: ["Blog"],
     }),
     deleteBlog: builder.mutation<any, string | number>({
       query: (id: any) => ({
         url: `blog/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Comment Blog"],
+      invalidatesTags: ["Blog"],
     }),
     updateBlog: builder.mutation<any, any>({
       query: (data: any) => ({
-        url: `blog/update/${data.id}`,
+        url: `blog/${data.id}`,
         method: "PUT",
         body: data.data,
       }),
-      invalidatesTags: ["Comment Blog"],
+      invalidatesTags: ["Blog"],
     }),
   }),
 });

@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 export const checkAuth = () => {
   const navigate = useNavigate();
-  const auth = JSON.parse(localStorage.getItem("auth") || "{}")?.user;
+  const admin = JSON.parse(localStorage.getItem("auth") || "{}")?.authen?.role;
   // console.log("auth", auth?.role);
-  if (!auth) {
+  if (admin !== 1) {
     return navigate("/auth/signin");
   }
 };

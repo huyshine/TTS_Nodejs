@@ -15,9 +15,12 @@ const List = () => {
     refetch()
   },[blogs?.data?.comments])
 
+  // console.log("blogs", blogs);
+  
 
 
   const [deleteBlog] = useDeleteBlogMutation();
+
   const handleDelete = (id: string) => {
     try {
       swal({
@@ -56,24 +59,24 @@ const List = () => {
       title: "image",
       dataIndex: "image",
       key: "image",
-      render: (text: any) => <img src={text} alt="" />,
+      render: (text: any) => <img width={150} src={text} alt="" />,
     },
     {
       title: "content",
       dataIndex: "content",
       key: "content",
     },
-    {
-      title: "Số comments",
-      dataIndex: "comments",
-      key: "comments",
-      render: (comment: any) => <p>{comment?.length}</p>,
-    },
+    // {
+    //   title: "Số comments",
+    //   dataIndex: "comments",
+    //   key: "comments",
+    //   render: (comment: any) => <p>{comment?.length}</p>,
+    // },
     {
       title: "Người đăng bài",
-      dataIndex: "userId",
-      key: "userId",
-      render: (auth: any) => <p>{auth?.name}</p>,
+      dataIndex: "name",
+      key: "name",
+      render: (auth: any) => <p>{auth}</p>,
     },
     {
       title: "Action",
@@ -81,9 +84,9 @@ const List = () => {
       render: (_: any, record: any) => (
         <Space size="middle">
           <Button>
-            <Link to={`/admin/blog/edit/${record?.slug}`}>Edit</Link>
+            <Link to={`/admin/blog/edit/${record?.id}`}>Edit</Link>
           </Button>
-          <Button danger onClick={() => handleDelete(record?._id)}>
+          <Button danger onClick={() => handleDelete(record?.id)}>
             Delete
           </Button>
         </Space>

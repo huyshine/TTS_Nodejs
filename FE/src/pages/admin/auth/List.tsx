@@ -27,11 +27,16 @@ const ListAuth = () => {
       key: "email",
     },
     {
-      title: "Tương tác",
-      dataIndex: "comments",
-      key: "comments",
-      render: (tt:any) => <a>{tt.length}</a>,
+      title: "Quyền",
+      dataIndex: "role",
+      key: "role",
     },
+    // {
+    //   title: "Tương tác",
+    //   dataIndex: "comments",
+    //   key: "comments",
+    //   render: (tt:any) => <a>{tt.length}</a>,
+    // },
     {
       title: "Action",
       key: "action",

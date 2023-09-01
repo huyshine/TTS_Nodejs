@@ -9,32 +9,36 @@ const { TextArea } = Input;
 
 const Edit = () => {
   const [  updateBlog  ] = useUpdateBlogMutation();
-  const { slug } = useParams();
-  const { data: blog , isLoading } = useGetBlogDetailQuery(slug || "");
+  const { id } = useParams();
+  const { data: blog , isLoading } = useGetBlogDetailQuery(id || "");
   const [form] = Form.useForm();  
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     if(blog){
       form.setFieldsValue({
-        title: blog?.data.title,
-        content: blog?.data?.content,
+        title: blog?.data[0]?.title,
+        content: blog?.data[0]?.content,
+        image : blog?.data[0]?.image
       });
     }
   }, [blog]);
   // console.log(blog);
+
   
   const onFinish = (values: any) => {
-    const userId = JSON.parse(localStorage.getItem('auth'))?.user?.id
+    const userId = JSON.parse(localStorage.getItem('auth'))?.authen?.id
     const data = {
-      id: blog?.data._id,
+      id: blog?.data[0].id,
       data: {
         title : values.title,
         content : values.content,
-        userId : userId,
+        image : blog?.data[0]?.image,
+        id_user : userId,
       }
     }
+    
     updateBlog(data)
     .unwrap()
     .then(() => {

@@ -5,9 +5,9 @@ export const commentApi = createApi({
   reducerPath: "comments",
   tagTypes: ["Comment"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api",
+    baseUrl: "http://localhost:3000/api",
     prepareHeaders: (headers) => {
-      const token = JSON.parse(localStorage.getItem("auth")).accessToken;
+      const token = JSON.parse(localStorage.getItem("auth"))?.access_token;
       headers.set("authorization", `Bearer ${token}`);
       // modify header theo từng request
       return headers;

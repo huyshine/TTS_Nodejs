@@ -5,7 +5,7 @@ export const authApi = createApi({
   reducerPath: "auth",
   tagTypes: ["User"],
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api",
+    baseUrl: "http://localhost:3000/api",
     fetchFn: async (...args) => {
       await pause(1000);
       return fetch(...args);
